@@ -4,7 +4,7 @@ const Meals = require("./models/meal-overview-model");
 const fs = require("fs");
 const axios = require("axios");
 const cors = require("cors");
-
+const Features = require("./utils/features");
 const app = express();
 app.use(
   cors({
@@ -18,44 +18,20 @@ mongoose.connect(process.env.DATABASE);
 
 app.get("/", async (req, res) => {
   //pagination is added by default
-  const page = req.query.page * 1 || 1;
-  const limit = req.query.limit * 1 || 100;
-  const skip = (page - 1) * limit;
-  if (req.query.strCategory === "All") {
-    filter = {};
-  }
-  //default getting meals sort by mealNames
-  if (!req.query.sort) {
-    const meals = await Meals.find(filter)
-      .sort("strMeal")
-      .skip(skip)
-      .limit(limit);
-    res.json(meals);
-  }
-  // filtering by category and sort by price
 
-  if (req.query.sort && req.query.strCategory) {
-    const filter = req.query.strCategory;
-    const sortDirection = req.query.sort.split(",")[1];
-    const meals = await Meals.find({ strCategory: filter })
-      .sort({
-        price: sortDirection,
-      })
-      .skip(skip)
-      .limit(limit);
-    res.json(meals);
-  }
-  if (req.query.sort && !req.query.strCategory) {
-    const filter = req.query.strCategory;
-    const sortDirection = req.query.sort.split(",")[1];
-    const meals = await Meals.find()
-      .sort({
-        price: sortDirection,
-      })
-      .skip(skip)
-      .limit(limit);
-    res.json(meals);
-  }
+  const features = new Features(Meals.find(), req.query)
+    .filter()
+    .sort()
+    .paginate();
+  const meals = await features.query;
+
+  res.status(200).json({
+    status: "success",
+    results: meals.length,
+    data: {
+      meals,
+    },
+  });
 });
 
 // SEND RESPONSE
