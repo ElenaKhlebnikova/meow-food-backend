@@ -17,21 +17,26 @@ mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DATABASE);
 
 app.get("/", async (req, res) => {
-  let index;
-  if (req.query.sort === "price-decs") index = -1;
-  if (req.query.sort === "price-acs") index = 1;
   console.log(req.query);
-  if (req.query.sort !== {} && !req.query.strCategory) {
-    const meals = await Meals.find().sort({
-      price: index,
+  //default getting meals sort by mealNames
+  if (!req.query.sort) {
+    const meals = await Meals.find(req.query).sort("strMeal");
+    res.json(meals);
+  }
+  // filtering by category and sort by price
+  const filter = req.query.strCategory;
+  const sortDirection = req.query.sort.split(",")[1];
+
+  if (req.query.sort && req.query.strCategory) {
+    const meals = await Meals.find({ strCategory: filter }).sort({
+      price: sortDirection,
     });
     res.json(meals);
-  } else if (req.query.sort !== {} && req.query.strCategory !== {}) {
-    const meals = await Meals.find({ strCategory: req.query.strCategory });
-    res.json(meals);
-  } else {
-    const meals = await Meals.find();
-
+  }
+  if (req.query.sort && !req.query.strCategory) {
+    const meals = await Meals.find().sort({
+      price: sortDirection,
+    });
     res.json(meals);
   }
 });
