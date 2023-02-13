@@ -40,6 +40,27 @@ app.get("/", async (req, res) => {
   }
 });
 
+// get one meal
+app.get("/:id", async (req, res) => {
+  try {
+    console.log(req.params.id);
+    const meal = await Meals.findOne({ idMeal: req.params.id });
+
+    res.status(200).json({
+      status: "success",
+
+      data: {
+        meal,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: `Something went wrong... ${err}`,
+    });
+  }
+});
+
 app.get("*", function (req, res) {
   res.status(404).json({
     status: "fail",
