@@ -18,19 +18,32 @@ mongoose.connect(process.env.DATABASE);
 
 app.get("/", async (req, res) => {
   //pagination is added by default
+  try {
+    const features = new Features(Meals.find(), req.query)
+      .filter()
+      .sort()
+      .paginate();
+    const meals = await features.query;
 
-  const features = new Features(Meals.find(), req.query)
-    .filter()
-    .sort()
-    .paginate();
-  const meals = await features.query;
+    res.status(200).json({
+      status: "success",
+      results: meals.length,
+      data: {
+        meals,
+      },
+    });
+  } catch (err) {
+    res.status(400).json({
+      status: "fail",
+      message: `Something went wrong... ${err}`,
+    });
+  }
+});
 
-  res.status(200).json({
-    status: "success",
-    results: meals.length,
-    data: {
-      meals,
-    },
+app.get("*", function (req, res) {
+  res.status(404).json({
+    status: "fail",
+    message: "Not found",
   });
 });
 
