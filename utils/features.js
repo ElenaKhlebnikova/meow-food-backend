@@ -4,7 +4,7 @@ class Features {
     this.queryString = queryString;
   }
   filter() {
-    if (!this.queryString.strCategory) {
+    if (this.queryString.strCategory === "All") {
       this.query = this.query.find();
       return this;
     } else {
