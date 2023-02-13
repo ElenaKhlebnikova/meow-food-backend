@@ -44,13 +44,13 @@ app.get("/", async (req, res) => {
 app.get("/:id", async (req, res) => {
   try {
     console.log(req.params.id);
-    const meal = await Meals.findOne({ idMeal: req.params.id });
+    const meals = await Meals.findOne({ idMeal: req.params.id });
 
     res.status(200).json({
       status: "success",
 
       data: {
-        meal,
+        meals,
       },
     });
   } catch (err) {
