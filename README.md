@@ -30,11 +30,9 @@ Click  [here](https://meow-food-api.onrender.com/) to view the API.
 | Route  | Description   | Example  |
 |---|---|---|
 | GET "/:id"   | returns one meal with a list of ingredients and categories  |  [view Example](https://meow-food-api.onrender.com/52955) |  
-| 
-GET "/?strCategory=CATEGORY"  |  returns list of meals filtered by their category (possible categories: Vegan, Vegetarian, Breakfast, All  |  [view Example](https://meow-food-api.onrender.com/?strCategory=Vegan) |   
-| GET "/?strCategory=All&sort=price,SORT_ORDER"  | 
- returns a list of meals which is sorted based on their price (possible sort order: 1, -1)  | [view Example](https://meow-food-api.onrender.com/?strCategory=All&sort=price,1)  |      
-|GET "/?strCategory=All&page=PAGE&limit=6"   |  returns a paginated list of meals with the limit set to 6  | [view Example](https://meow-food-api.onrender.com/?strCategory=All&page=3&limit=6)  |  
+GET "/?strCategory=CATEGORY"  |  returns list of meals filtered by their category (possible categories: Vegan, Vegetarian, Breakfast, All  |  [view Example](https://meow-food-api.onrender.com/?strCategory=Vegan) |
+GET "/?strCategory=All&sort=price,SORT_ORDER"  |  returns a list of meals which is sorted based on their price (possible sort order: 1, -1)  | [view Example](https://meow-food-api.onrender.com/?strCategory=All&sort=price,1)  |      
+GET "/?strCategory=All&page=PAGE&limit=6"   |  returns a paginated list of meals with the limit set to 6  | [view Example](https://meow-food-api.onrender.com/?strCategory=All&page=3&limit=6)  |  
 
 
 
