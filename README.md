@@ -54,8 +54,10 @@ GET "/?strCategory=All&page=PAGE&limit=6"   |  returns a paginated list of meals
 
 
 ## 📖What I have learnt
-1. Using Node.js and Express to create a backend API
-2. How to send customized data to the frontend based on query params (pagination, filtering, sorting).
-3. How to integrate MongoDB with an Express API using Mongoose ORM.
-4. How to deploy to Netlify, Render and Railway.
+1. Using Node.js and Express to create a backend API.
+2. How to handle request on the backend and store it in DB.
+3. How to work with env variables locally (.env files) and on deployment platform (Railway, Render)
+4. How to integrate MongoDB with an Express API using Mongoose ORM.
+5. How to deploy to Render and Railway.
+6. How to use Postman to locally test APIs during development.
 
