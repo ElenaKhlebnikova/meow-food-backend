@@ -13,9 +13,9 @@ MeowFood backend is built with the following tech stack:
 
 | Technology                                                          | Usage                                                                                                          
 | ------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------- |
-| Node.js                                     | JS runtime to build a server      |
+| Node.js                                     | JS runtime to build backend APIs      |
 | Express                                    | Node.js framework for building APIs |
-| MongoDB                           | A document database to store list of meals and comments                              |
+| MongoDB                           | Database used to store list of meals and comments                              |
 
                                                               
 
