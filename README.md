@@ -21,35 +21,34 @@ MeowFood backend is built with the following tech stack:
 
 ## 👀 Project Overview
 
-Click  [here](https://meow-food-api.onrender.com/) to view the project.
+Click  [here](https://meow-food-api.onrender.com/) to view the API.
 
 
 ### Routes
 GET "/:id" returns one meal with a list of ingredients and categories
-[view](https://meow-food-api.onrender.com/52955)
+[view Example](https://meow-food-api.onrender.com/52955)
 
 
 GET "/?strCategory=CATEGORY" returns list of meals filtered by their category (possible categories: Vegan, Vegetarian, Breakfast, All
-[view](https://meow-food-api.onrender.com/?strCategory=Vegan)
+[view Example](https://meow-food-api.onrender.com/?strCategory=Vegan)
 
 
 GET "/?strCategory=All&sort=price,SORT_ORDER" returns a list of meals which is sorted based on their price (possible sort order: 1, -1)
-[view](https://meow-food-api.onrender.com/?strCategory=All&sort=price,1)
+[view Example](https://meow-food-api.onrender.com/?strCategory=All&sort=price,1)
 
 GET "/?strCategory=All&page=PAGE&limit=6" returns a paginated list of meals with the limit set to 6
-[view](https://meow-food-api.onrender.com/?strCategory=All&page=3&limit=6)
+[view Example](https://meow-food-api.onrender.com/?strCategory=All&page=3&limit=6)
 
 
 ## 🐈 Features 
 
-1. Pagination.
+1. Paginated list of meals fetched from an API with added pricing.
 2. Filtering and sorting of meals.
 
 
 
 ## 📖What I have learnt
-1. Using Node.js and Express to create a server.
-2. How to build simple API to use in applications.
-3. How to send date to the fronend based on request (filtering, sorting, pagination).
-4. How to use MongoDB to read and write documents. 
+1. Using Node.js and Express to create a backend API
+2. How to send customized data to the frontend based on query params (pagination, filtering, sorting).
+4. How to integrate MongoDB with an Express API using Mongoose ORM. 
 
